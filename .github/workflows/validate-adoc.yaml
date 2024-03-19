@@ -1,0 +1,21 @@
+name: Validate AsciiDoc
+
+on:
+  workflow_dispatch:
+
+jobs:
+  validate_asciidoc:
+    name: Validate AsciiDoc
+    runs-on:
+      - self-hosted
+      - Windows
+      - X64
+      - low-spec-runner-windows-x64
+      - bevdev-body
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+      - name: Validate AsciiDoc
+        uses: jtamaki/swe-actions/adoc-validator@main
+        with:
+          input_dir: '.'
